@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Big Moose AI Solutions</title>
+  <meta name="description" content="Start your project with Big Moose AI Solutions. Offices in Steamboat Springs, Miami and Madrid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="assets/logo-mark.webp">
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grain"></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="assets/logo-header.webp" alt="Big Moose AI Solutions" onerror="this.style.display='none'">
+      </a>
+      <ul class="nav-links">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Insights</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="contact.html"><span class="btn-label">Hire us</span></a>
+        <a class="btn btn-primary" href="contact.html"><span class="btn-label">Start your project</span></a>
+      </div>
+      <button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-menu">
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="blog.html">Insights</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-grad" href="contact.html"><span class="btn-label">Start your project</span></a>
+    </nav>
+  </header>
+
+  <section class="page-hero" style="padding-bottom: 40px;">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <span class="hero-kicker">Contact</span>
+        <h1><span data-split>Let's make something</span> <span class="grad-text" data-split>big.</span></h1>
+        <p class="lead">Tell us about your brand and your goals. We'll come back within one business day with next steps — and usually a few ideas you didn't ask for.</p>
+        <a class="contact-email" href="mailto:hello@bigmoose.ai">hello@bigmoose.ai</a>
+        <div class="offices" data-stagger>
+          <div class="office reveal">
+            <h5>Steamboat Springs</h5>
+            <p>Colorado, USA — Mountain HQ</p>
+          </div>
+          <div class="office reveal">
+            <h5>Miami</h5>
+            <p>Florida, USA — LATAM gateway</p>
+          </div>
+          <div class="office reveal">
+            <h5>Madrid</h5>
+            <p>Spain — European hub</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="field">
+            <label for="budget">Budget</label>
+            <select id="budget" name="budget">
+              <option value="">Select a range</option>
+              <option>Under $5k / month</option>
+              <option>$5k – $15k / month</option>
+              <option>$15k – $50k / month</option>
+              <option>$50k+ / month</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="interest">What do you need?</label>
+          <select id="interest" name="interest">
+            <option value="">Select a vertical</option>
+            <option>Creative &amp; Content</option>
+            <option>Marketing &amp; Growth</option>
+            <option>Automation &amp; Ops</option>
+            <option>Strategy &amp; Business Development</option>
+            <option>Not sure yet — help me choose</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Project details</label>
+          <textarea id="message" name="message" placeholder="Tell us about your goals, timeline and anything else we should know." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-grad" style="width: 100%; justify-content: center;">
+          <span class="btn-label">Start your project</span> <span class="arrow">→</span>
+        </button>
+        <p class="form-note">We reply within one business day. Your information is never shared.</p>
+        <div class="form-success">Thanks! Your message is on its way — we'll be in touch within one business day. 🦌</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======= FAQ ======= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-kicker">FAQ</span>
+          <h2>Questions we hear a lot.</h2>
+        </div>
+      </div>
+      <div class="faq" data-stagger>
+        <details class="faq-item reveal">
+          <summary>How fast can we start?</summary>
+          <div class="faq-body">Discovery calls happen within the week. Most engagements kick off with an AI Knowledge Foundation audit and show first deliverables inside 30 days.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Do we need to buy a full vertical?</summary>
+          <div class="faq-body">No. Most clients start with a single entry service — Local SEO, Copywriting, Data Organization — and scale into the vertical as results compound.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What makes you different from a traditional agency?</summary>
+          <div class="faq-body">Every workflow is AI-first by design: creative is generated and tested programmatically, campaigns optimize in real time, and reporting is a live loop — not a Monday PDF.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Do you work with clients outside the US and Spain?</summary>
+          <div class="faq-body">Yes. With teams in Steamboat Springs, Miami and Madrid, we cover US, LATAM and European time zones in English and Spanish.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand footer-logo">
+            <img src="assets/logo-full.webp" alt="Big Moose AI Solutions logo" onerror="this.style.display='none'">
+          </a>
+          <p>An AI-first agency blending creative craft, growth marketing and intelligent automation.</p>
+        </div>
+        <div>
+          <h5>Verticals</h5>
+          <ul>
+            <li><a href="services.html#creative">Creative &amp; Content</a></li>
+            <li><a href="services.html#growth">Marketing &amp; Growth</a></li>
+            <li><a href="services.html#automation">Automation &amp; Ops</a></li>
+            <li><a href="services.html#strategy">Strategy &amp; BD</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Company</h5>
+          <ul>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="blog.html">Insights</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Get in touch</h5>
+          <ul>
+            <li><a href="mailto:hello@bigmoose.ai">hello@bigmoose.ai</a></li>
+            <li><a href="contact.html">Start your project</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Big Moose AI Solutions. All rights reserved.</span>
+        <div class="footer-locations">
+          <span>Steamboat Springs</span>
+          <span>Miami</span>
+          <span>Madrid</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
