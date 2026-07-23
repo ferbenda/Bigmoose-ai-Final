@@ -960,7 +960,7 @@ a { color: inherit; text-decoration: none; }
   .p-step p { grid-column: 2; }
 }
 @media (max-width: 720px) {
-  .nav-links, .nav-cta .btn-outline { display: none; }
+  .nav-links, .nav-cta { display: none; }
   .burger { display: block; }
   .mobile-menu {
     position: fixed;
@@ -1218,4 +1218,26 @@ a { color: inherit; text-decoration: none; }
   .mini-card p { display: none; }
   .hc-slide { gap: 18px; padding-top: 84px; }
   .btn-xl { padding: 16px 28px; font-size: 1rem; }
+}
+
+/* ---- Face 1: full-bleed hero video ---- */
+.slide-video {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  position: relative;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* En vertical (movil), el video comienza debajo del header */
+@media (orientation: portrait) {
+  .hero-video {
+    top: 76px;
+    height: calc(100% - 76px);
+  }
 }
