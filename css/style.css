@@ -1227,17 +1227,14 @@ a { color: inherit; text-decoration: none; }
   padding: 0;
   position: relative;
 }
+/* El video siempre comienza debajo del header, en cualquier orientacion */
 .hero-video {
   position: absolute;
-  inset: 0;
+  top: 90px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 90px);
   object-fit: cover;
-}
-/* En vertical (movil), el video comienza debajo del header */
-@media (orientation: portrait) {
-  .hero-video {
-    top: 76px;
-    height: calc(100% - 76px);
-  }
 }
