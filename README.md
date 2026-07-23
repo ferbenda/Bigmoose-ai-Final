@@ -13,3 +13,4 @@ Sitio estático (HTML/CSS/JS) desplegado en Vercel.
 - Video de Vimeo en el hero (ver comentario en index.html, cara 1)
 - Showreel en work.html
 - Conectar formulario de contacto (Formspree/Resend)
+ 
