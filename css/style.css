@@ -1703,6 +1703,42 @@ a { color: inherit; text-decoration: none; }
 .vp-arrow { transition: transform 0.3s var(--ease); }
 .vpanel:hover .vp-arrow { transform: translateX(5px); }
 
+/* ---- Panels with photo backgrounds ---- */
+/* --vpos centra al protagonista (moose) cuando el panel esta cerrado y recortado */
+.vp-creative { --vimg: url("../assets/v-creative.webp"); --vpos: 50% 45%; }
+.vp-growth { --vimg: url("../assets/v-growth.webp"); --vpos: 56% 48%; }
+.vp-automation { --vimg: url("../assets/v-automation.webp"); --vpos: 78% 42%; }
+.vp-strategy { --vimg: url("../assets/v-strategy.webp"); --vpos: 16% 30%; }
+.vpanel.has-photo {
+  background-image: var(--vimg);
+  background-size: cover;
+  background-position: var(--vpos, center);
+}
+/* brand-color tint layer over the photo */
+.vpanel.has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 13, 0.22) 0%, rgba(10, 10, 13, 0.6) 100%),
+    linear-gradient(160deg, color-mix(in srgb, var(--pc) 85%, #0a0a0d) 0%, color-mix(in srgb, var(--pc) 45%, #0a0a0d) 100%);
+  opacity: 0.66;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+/* texto legible sobre foto */
+.vpanel.has-photo .vp-num { color: #fff; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6); }
+.vpanel.has-photo .vp-side { text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65); }
+/* al expandir: la capa de color sube de opacidad */
+.vpanel.has-photo:hover {
+  background: var(--vimg) var(--vpos, center) / cover no-repeat;
+  border-color: transparent;
+}
+.vpanel.has-photo:hover::after { opacity: 0.86; }
+/* contenido siempre por encima de foto + tinte */
+.vpanel .vp-num, .vpanel .vp-side { position: relative; z-index: 1; }
+.vpanel .vp-open { z-index: 1; }
+
 @media (max-width: 1020px) {
   .vert-panels { height: 420px; }
 }
@@ -1711,6 +1747,8 @@ a { color: inherit; text-decoration: none; }
   /* En movil: paneles apilados, siempre abiertos y compactos */
   .vert-panels { flex-direction: column; height: auto; gap: 12px; }
   .vpanel { flex: none; padding: 22px; background: linear-gradient(160deg, color-mix(in srgb, var(--pc) 55%, #0a0a0d), color-mix(in srgb, var(--pc) 20%, #0a0a0d)); }
+  .vpanel.has-photo { background: var(--vimg) var(--vpos, center) / cover no-repeat; }
+  .vpanel.has-photo::after { opacity: 0.78; }
   .vp-side { display: none; }
   .vp-open { position: static; opacity: 1; transform: none; margin-top: 10px; min-width: 0; pointer-events: auto; }
   .vert-panels:hover .vpanel:not(:hover) { opacity: 1; filter: none; }
