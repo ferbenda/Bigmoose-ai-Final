@@ -1307,98 +1307,179 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================
-   VERTICALS WHEEL (ruleta "What we do")
+   TOKYO NEON MARQUEE v2 — mas flashy
    ============================================================ */
-.wheel-wrap { display: flex; justify-content: center; }
-.wheel {
-  position: relative;
-  width: min(580px, 92vw);
-  aspect-ratio: 1;
-}
-.wheel-svg { width: 100%; height: 100%; overflow: visible; display: block; }
-.wheel-spin {
-  animation: wheelSpin 60s linear infinite;
-  transform-origin: 0px 0px;
-}
-.wheel:hover .wheel-spin { animation-play-state: paused; }
-@keyframes wheelSpin { to { transform: rotate(360deg); } }
-
-.slice { cursor: pointer; }
-.slice path {
-  fill: color-mix(in srgb, var(--sc) 14%, #121218);
-  stroke: #0a0a0d;
-  stroke-width: 3;
-  transition: fill 0.35s var(--ease), filter 0.35s;
-}
-.slice text {
-  font-family: var(--font-display);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  fill: rgba(244, 245, 247, 0.85);
-  text-anchor: middle;
-  pointer-events: none;
-  transition: fill 0.3s;
-}
-.slice .sl-num { font-size: 9px; letter-spacing: 0.2em; fill: var(--sc); }
-.slice > path, .slice > text {
-  transition: transform 0.45s var(--ease), fill 0.35s var(--ease), filter 0.35s;
-}
-/* Hover: slice solido con color de la paleta y se despega como un slice de pizza */
-.slice:hover path {
-  fill: var(--sc);
-  filter: drop-shadow(0 0 26px color-mix(in srgb, var(--sc) 75%, transparent));
-}
-.slice:hover > path, .slice:hover > text {
-  transform: translate(var(--tx), var(--ty));
-}
-.slice:hover text { fill: #fff; }
-.slice:hover .sl-num { fill: rgba(255, 255, 255, 0.85); }
-
-/* Centro de la ruleta: el tema en hover se centra aqui */
-.wheel-center {
+.marquee { padding: 32px 0; }
+.marquee .neon-haze {
   position: absolute;
-  inset: 29%;
-  border-radius: 50%;
-  background: rgba(10, 10, 13, 0.94);
-  border: 1px solid var(--line);
+  inset: -20px 0;
+  pointer-events: none;
+  background:
+    radial-gradient(30% 160% at 12% 50%, rgba(0, 174, 239, 0.28), transparent 65%),
+    radial-gradient(26% 150% at 38% 50%, rgba(139, 61, 255, 0.24), transparent 65%),
+    radial-gradient(30% 160% at 64% 50%, rgba(240, 30, 208, 0.26), transparent 65%),
+    radial-gradient(26% 150% at 88% 50%, rgba(46, 107, 255, 0.26), transparent 65%);
+  background-size: 220% 100%;
+  filter: blur(22px);
+  animation: hazeDrift 9s linear infinite;
+}
+@keyframes hazeDrift { to { background-position: -220% 0; } }
+.marquee-track {
+  position: relative;
+  z-index: 1;
+  animation-duration: 20s;
+  gap: 64px;
+}
+.marquee-track span {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  gap: 64px;
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.95),
+    0 0 10px var(--neon),
+    0 0 22px var(--neon),
+    0 0 46px var(--neon),
+    0 0 90px var(--neon);
+  animation: neonBreath 2.6s ease-in-out infinite alternate;
+}
+.marquee-track span:nth-child(2n) { animation-delay: 1.3s; }
+@keyframes neonBreath {
+  from { filter: brightness(1); }
+  to { filter: brightness(1.35); }
+}
+.marquee-track span::after {
+  font-size: 1rem;
+  animation: diamondPulse 1.5s ease-in-out infinite;
+}
+@keyframes diamondPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+/* mantiene el parpadeo de letrero definido en v1 (neonFlicker) */
+
+/* ============================================================
+   VERTICALS PANELS — "What we do" expandible
+   ============================================================ */
+.vert-panels {
+  display: flex;
+  gap: 16px;
+  height: 480px;
+}
+.vpanel {
+  --pc: #2e6bff;
+  position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-  padding: 9%;
-  z-index: 2;
-  pointer-events: none;
-  transition: border-color 0.35s, box-shadow 0.35s;
+  padding: 30px 28px;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--pc) 30%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--pc) 9%, #101016), #0d0d12);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    flex 0.7s var(--ease),
+    background 0.5s var(--ease),
+    border-color 0.4s,
+    opacity 0.45s,
+    box-shadow 0.5s;
 }
-.wheel-center .wc-kicker {
-  font-family: var(--font-display);
-  font-size: 0.62rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
+/* brillo interno sutil en reposo */
+.vpanel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(70% 50% at 50% 110%, color-mix(in srgb, var(--pc) 22%, transparent), transparent 70%);
+  opacity: 0.7;
+  transition: opacity 0.4s;
 }
-.wheel-center h3 {
+.vpanel:hover {
+  flex: 3.1;
+  background: linear-gradient(160deg, var(--pc), color-mix(in srgb, var(--pc) 45%, #0a0a0d) 90%);
+  border-color: transparent;
+  box-shadow: 0 34px 80px -34px color-mix(in srgb, var(--pc) 85%, transparent);
+}
+.vpanel:hover::before { opacity: 0; }
+.vert-panels:hover .vpanel:not(:hover) {
+  opacity: 0.45;
+  filter: saturate(0.6);
+}
+.vp-num {
   font-family: var(--font-display);
-  font-size: clamp(0.95rem, 2.4vw, 1.35rem);
+  font-size: 0.85rem;
   font-weight: 700;
-  line-height: 1.15;
-  transition: color 0.3s;
+  letter-spacing: 0.22em;
+  color: var(--pc);
+  transition: color 0.35s;
 }
-.wheel-center p {
-  color: var(--muted);
-  font-size: clamp(0.7rem, 1.6vw, 0.85rem);
-  line-height: 1.45;
+.vpanel:hover .vp-num { color: rgba(255, 255, 255, 0.9); }
+/* titulo vertical cuando el panel esta cerrado */
+.vp-side {
+  margin-top: auto;
+  align-self: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--text);
+  transition: opacity 0.25s;
 }
-.wheel.active .wheel-center {
-  border-color: var(--wc, var(--accent));
-  box-shadow: 0 0 34px -8px var(--wc, var(--accent));
+.vpanel:hover .vp-side { opacity: 0; }
+/* contenido al expandir */
+.vp-open {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+  min-width: 280px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s var(--ease) 0.18s, transform 0.5s var(--ease) 0.18s;
+  pointer-events: none;
 }
+.vpanel:hover .vp-open { opacity: 1; transform: none; }
+.vp-open h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.vp-open p {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  max-width: 40ch;
+}
+.vp-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  padding-bottom: 3px;
+}
+.vp-arrow { transition: transform 0.3s var(--ease); }
+.vpanel:hover .vp-arrow { transform: translateX(5px); }
 
+@media (max-width: 1020px) {
+  .vert-panels { height: 420px; }
+}
 @media (max-width: 720px) {
-  .marquee-track span { font-size: 1.05rem; }
-  .slice text { font-size: 14px; }
+  .marquee-track span { font-size: 1.15rem; }
+  /* En movil: paneles apilados, siempre abiertos y compactos */
+  .vert-panels { flex-direction: column; height: auto; gap: 12px; }
+  .vpanel { flex: none; padding: 22px; background: linear-gradient(160deg, color-mix(in srgb, var(--pc) 55%, #0a0a0d), color-mix(in srgb, var(--pc) 20%, #0a0a0d)); }
+  .vp-side { display: none; }
+  .vp-open { position: static; opacity: 1; transform: none; margin-top: 10px; min-width: 0; pointer-events: auto; }
+  .vert-panels:hover .vpanel:not(:hover) { opacity: 1; filter: none; }
 }
