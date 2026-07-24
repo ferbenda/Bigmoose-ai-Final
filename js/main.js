@@ -214,3 +214,38 @@
 
   restart();
 })();
+
+/* ===== Verticals wheel (ruleta What we do) ===== */
+(function () {
+  const wheel = document.getElementById("vwheel");
+  if (!wheel) return;
+  const data = [
+    { t: "Creative & Content", d: "Creative production at scale, powered by AI.", c: "#00aeef" },
+    { t: "Marketing & Growth", d: "Attract and convert demand, end-to-end.", c: "#2e6bff" },
+    { t: "Automation & Ops", d: "Operational efficiency through AI.", c: "#8b3dff" },
+    { t: "Strategy & BD", d: "Your roadmap before you scale.", c: "#f01ed0" }
+  ];
+  const title = document.getElementById("wc-title");
+  const desc = document.getElementById("wc-desc");
+  const kick = document.getElementById("wc-kicker");
+  const reset = () => {
+    wheel.classList.remove("active");
+    kick.textContent = "Our verticals";
+    title.textContent = "Spin & hover";
+    desc.textContent = "Four verticals, one intelligent engine.";
+    title.style.color = "";
+    wheel.style.removeProperty("--wc");
+  };
+  wheel.querySelectorAll(".slice").forEach((sl) => {
+    sl.addEventListener("mouseenter", () => {
+      const d = data[+sl.dataset.slice];
+      wheel.classList.add("active");
+      kick.textContent = "0" + (+sl.dataset.slice + 1) + " — Vertical";
+      title.textContent = d.t;
+      desc.textContent = d.d;
+      title.style.color = d.c;
+      wheel.style.setProperty("--wc", d.c);
+    });
+  });
+  wheel.addEventListener("mouseleave", reset);
+})();

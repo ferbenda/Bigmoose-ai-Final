@@ -141,71 +141,44 @@
     </div>
   </div>
 
-  <!-- ======= VERTICALS ======= -->
-  <section class="section">
+  <!-- ======= VERTICALS WHEEL ======= -->
+  <section class="section" id="what-we-do">
     <div class="container">
       <div class="section-head reveal">
         <div>
           <span class="section-kicker">What we do</span>
           <h2>Four verticals. One intelligent engine.</h2>
         </div>
-        <p>Every service we offer plugs into an AI-first workflow — from your first creative asset to fully autonomous optimization.</p>
+        <p>Spin through our verticals — hover a slice to see what it can do for your brand.</p>
       </div>
-      <div class="verticals-grid" data-stagger>
-        <a href="services.html#creative" class="v-card reveal">
-          <span class="num">01</span>
-          <span class="card-arrow">→</span>
-          <h3>Creative &amp; Content</h3>
-          <p class="tagline">Creative production at scale, powered by AI</p>
-          <p>Copy, photography and video that never stops iterating. Generative pipelines produce on-brand assets programmatically, tested and optimized in real time.</p>
-          <div class="chips">
-            <span class="chip">Copywriting</span>
-            <span class="chip">Photography</span>
-            <span class="chip">Video AI</span>
-            <span class="chip new">Automated creative testing</span>
-            <span class="chip new">Programmatic generative video</span>
+      <div class="wheel-wrap reveal">
+        <div class="wheel" id="vwheel">
+          <svg class="wheel-svg" viewBox="-112 -112 224 224" aria-hidden="false" role="img" aria-label="Big Moose verticals wheel">
+            <g class="wheel-spin">
+              <a href="services.html#creative" class="slice sl-cyan" data-slice="0" style="--sc: #00aeef; --tx: 8px; --ty: -8px;">
+                <path d="M 0 0 L 0 -100 A 100 100 0 0 1 100 0 Z"/>
+                <text x="46" y="-40"><tspan class="sl-num" x="46" dy="-8">01</tspan><tspan x="46" dy="16">Creative</tspan></text>
+              </a>
+              <a href="services.html#growth" class="slice sl-blue" data-slice="1" style="--sc: #2e6bff; --tx: 8px; --ty: 8px;">
+                <path d="M 0 0 L 100 0 A 100 100 0 0 1 0 100 Z"/>
+                <text x="46" y="42"><tspan class="sl-num" x="46" dy="-8">02</tspan><tspan x="46" dy="16">Growth</tspan></text>
+              </a>
+              <a href="services.html#automation" class="slice sl-purple" data-slice="2" style="--sc: #8b3dff; --tx: -8px; --ty: 8px;">
+                <path d="M 0 0 L 0 100 A 100 100 0 0 1 -100 0 Z"/>
+                <text x="-46" y="42"><tspan class="sl-num" x="-46" dy="-8">03</tspan><tspan x="-46" dy="16">Automation</tspan></text>
+              </a>
+              <a href="services.html#strategy" class="slice sl-magenta" data-slice="3" style="--sc: #f01ed0; --tx: -8px; --ty: -8px;">
+                <path d="M 0 0 L -100 0 A 100 100 0 0 1 0 -100 Z"/>
+                <text x="-46" y="-40"><tspan class="sl-num" x="-46" dy="-8">04</tspan><tspan x="-46" dy="16">Strategy</tspan></text>
+              </a>
+            </g>
+          </svg>
+          <div class="wheel-center">
+            <span class="wc-kicker" id="wc-kicker">Our verticals</span>
+            <h3 id="wc-title">Spin &amp; hover</h3>
+            <p id="wc-desc">Four verticals, one intelligent engine.</p>
           </div>
-        </a>
-        <a href="services.html#growth" class="v-card reveal">
-          <span class="num">02</span>
-          <span class="card-arrow">→</span>
-          <h3>Marketing &amp; Growth</h3>
-          <p class="tagline">Attract and convert demand, end-to-end</p>
-          <p>From Local SEO to AEO — we make your brand visible where customers search today and where AI answers tomorrow, then convert that attention into pipeline.</p>
-          <div class="chips">
-            <span class="chip">Lead Generation</span>
-            <span class="chip">Brand Awareness</span>
-            <span class="chip">Local SEO</span>
-            <span class="chip new">AEO</span>
-            <span class="chip new">Predictive personalization</span>
-          </div>
-        </a>
-        <a href="services.html#automation" class="v-card reveal">
-          <span class="num">03</span>
-          <span class="card-arrow">→</span>
-          <h3>Automation &amp; Ops</h3>
-          <p class="tagline">Operational efficiency through AI</p>
-          <p>Customer service that answers instantly. Data that organizes itself. AI agents that prospect, segment and optimize autonomously — while you sleep.</p>
-          <div class="chips">
-            <span class="chip">Customer Service AI</span>
-            <span class="chip">Data Organization</span>
-            <span class="chip new">AI Agents</span>
-            <span class="chip new">Real-time reporting</span>
-          </div>
-        </a>
-        <a href="services.html#strategy" class="v-card reveal">
-          <span class="num">04</span>
-          <span class="card-arrow">→</span>
-          <h3>Strategy &amp; Business Development</h3>
-          <p class="tagline">Your roadmap before you scale</p>
-          <p>Strategic consulting for companies adopting AI. We audit, structure and plan — so every dollar you invest in execution lands where it matters.</p>
-          <div class="chips">
-            <span class="chip">Strategic AI Goals</span>
-            <span class="chip">Web Development</span>
-            <span class="chip">Media Buying</span>
-            <span class="chip new">AI Knowledge Foundation</span>
-          </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>

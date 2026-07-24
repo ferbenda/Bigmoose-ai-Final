@@ -1238,3 +1238,167 @@ a { color: inherit; text-decoration: none; }
   height: calc(100% - 90px);
   object-fit: cover;
 }
+
+/* ============================================================
+   TOKYO NEON MARQUEE
+   ============================================================ */
+.marquee {
+  background: #060608;
+  border-block: none;
+  padding: 26px 0;
+  position: relative;
+  overflow: hidden;
+}
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  z-index: 2;
+}
+.marquee::before {
+  top: 0;
+  background: linear-gradient(90deg, #00aeef, #2e6bff, #8b3dff, #f01ed0, #00aeef);
+  background-size: 300% 100%;
+  animation: neonSlide 6s linear infinite;
+  box-shadow: 0 0 8px #00aeef, 0 0 22px rgba(0, 174, 239, 0.8), 0 6px 24px rgba(0, 174, 239, 0.45);
+}
+.marquee::after {
+  bottom: 0;
+  background: linear-gradient(90deg, #f01ed0, #8b3dff, #2e6bff, #00aeef, #f01ed0);
+  background-size: 300% 100%;
+  animation: neonSlide 6s linear infinite reverse;
+  box-shadow: 0 0 8px #f01ed0, 0 0 22px rgba(240, 30, 208, 0.8), 0 -6px 24px rgba(240, 30, 208, 0.45);
+}
+@keyframes neonSlide { to { background-position: 300% 0; } }
+
+.marquee-track span {
+  --neon: #00aeef;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 10px var(--neon),
+    0 0 24px var(--neon),
+    0 0 48px var(--neon);
+}
+.marquee-track span:nth-child(4n+1) { --neon: #00aeef; }
+.marquee-track span:nth-child(4n+2) { --neon: #f01ed0; }
+.marquee-track span:nth-child(4n+3) { --neon: #8b3dff; }
+.marquee-track span:nth-child(4n+4) { --neon: #2e6bff; }
+.marquee-track span::after {
+  content: "◆";
+  font-size: 0.85rem;
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon), 0 0 20px var(--neon);
+}
+/* Parpadeo de tubo de neon en algunos letreros */
+.marquee-track span:nth-child(5n+2) { animation: neonFlicker 4.2s infinite; }
+.marquee-track span:nth-child(7n+4) { animation: neonFlicker 6.8s infinite 1.3s; }
+@keyframes neonFlicker {
+  0%, 6.5%, 8.5%, 100% { opacity: 1; }
+  7%, 8% { opacity: 0.35; text-shadow: none; }
+  7.5% { opacity: 0.9; }
+}
+
+/* ============================================================
+   VERTICALS WHEEL (ruleta "What we do")
+   ============================================================ */
+.wheel-wrap { display: flex; justify-content: center; }
+.wheel {
+  position: relative;
+  width: min(580px, 92vw);
+  aspect-ratio: 1;
+}
+.wheel-svg { width: 100%; height: 100%; overflow: visible; display: block; }
+.wheel-spin {
+  animation: wheelSpin 60s linear infinite;
+  transform-origin: 0px 0px;
+}
+.wheel:hover .wheel-spin { animation-play-state: paused; }
+@keyframes wheelSpin { to { transform: rotate(360deg); } }
+
+.slice { cursor: pointer; }
+.slice path {
+  fill: color-mix(in srgb, var(--sc) 14%, #121218);
+  stroke: #0a0a0d;
+  stroke-width: 3;
+  transition: fill 0.35s var(--ease), filter 0.35s;
+}
+.slice text {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  fill: rgba(244, 245, 247, 0.85);
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.3s;
+}
+.slice .sl-num { font-size: 9px; letter-spacing: 0.2em; fill: var(--sc); }
+.slice > path, .slice > text {
+  transition: transform 0.45s var(--ease), fill 0.35s var(--ease), filter 0.35s;
+}
+/* Hover: slice solido con color de la paleta y se despega como un slice de pizza */
+.slice:hover path {
+  fill: var(--sc);
+  filter: drop-shadow(0 0 26px color-mix(in srgb, var(--sc) 75%, transparent));
+}
+.slice:hover > path, .slice:hover > text {
+  transform: translate(var(--tx), var(--ty));
+}
+.slice:hover text { fill: #fff; }
+.slice:hover .sl-num { fill: rgba(255, 255, 255, 0.85); }
+
+/* Centro de la ruleta: el tema en hover se centra aqui */
+.wheel-center {
+  position: absolute;
+  inset: 29%;
+  border-radius: 50%;
+  background: rgba(10, 10, 13, 0.94);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 9%;
+  z-index: 2;
+  pointer-events: none;
+  transition: border-color 0.35s, box-shadow 0.35s;
+}
+.wheel-center .wc-kicker {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.wheel-center h3 {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 2.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+  transition: color 0.3s;
+}
+.wheel-center p {
+  color: var(--muted);
+  font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+  line-height: 1.45;
+}
+.wheel.active .wheel-center {
+  border-color: var(--wc, var(--accent));
+  box-shadow: 0 0 34px -8px var(--wc, var(--accent));
+}
+
+@media (max-width: 720px) {
+  .marquee-track span { font-size: 1.05rem; }
+  .slice text { font-size: 14px; }
+}
