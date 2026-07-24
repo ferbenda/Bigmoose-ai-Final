@@ -267,6 +267,7 @@
 
   <!-- ======= STATS ======= -->
   <section class="stats-band">
+    <canvas class="matrix-bg" aria-hidden="true"></canvas>
     <div class="container">
       <div class="stats-bento" data-stagger>
         <div class="sb-tile sb-big reveal" style="--sc: #f01ed0; --sc2: #8b3dff;">
@@ -276,14 +277,32 @@
           <div class="sb-sub">Across creative, growth, automation and strategy — one team, every discipline.</div>
         </div>
         <div class="sb-tile reveal" style="--sc: #00aeef; --sc2: #2e6bff;">
+          <svg class="sb-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="6" y="6" width="22" height="22" rx="5"/>
+            <rect x="36" y="6" width="22" height="22" rx="5"/>
+            <rect x="6" y="36" width="22" height="22" rx="5"/>
+            <rect x="36" y="36" width="22" height="22" rx="5"/>
+          </svg>
           <div class="sb-num"><span class="value" data-count="4">0</span></div>
           <div class="sb-label">Business verticals</div>
         </div>
         <div class="sb-tile reveal" style="--sc: #2e6bff; --sc2: #8b3dff;">
+          <svg class="sb-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="32" cy="32" r="26"/>
+            <ellipse cx="32" cy="32" rx="12" ry="26"/>
+            <path d="M6 32h52M9.5 20h45M9.5 44h45"/>
+          </svg>
           <div class="sb-num"><span class="value" data-count="3">0</span></div>
           <div class="sb-label">Offices worldwide</div>
         </div>
         <div class="sb-tile sb-wide reveal" style="--sc: #8b3dff; --sc2: #f01ed0;">
+          <svg class="sb-icon sb-icon-spin" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="32" cy="32" r="9"/>
+            <path d="M32 4a28 28 0 0 1 28 28" stroke-linecap="round"/>
+            <path d="M32 60A28 28 0 0 1 4 32" stroke-linecap="round"/>
+            <circle cx="60" cy="32" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="4" cy="32" r="3" fill="currentColor" stroke="none"/>
+          </svg>
           <span class="sb-live"><span class="sb-live-dot"></span>Live</span>
           <div class="sb-num"><span class="value" data-count="24" data-suffix="/7">0</span></div>
           <div class="sb-label">Autonomous optimization</div>
@@ -293,7 +312,7 @@
   </section>
 
   <!-- ======= PROCESS ======= -->
-  <section class="section">
+  <section class="section" style="padding-top: 50px;">
     <div class="container">
       <div class="section-head reveal">
         <div>

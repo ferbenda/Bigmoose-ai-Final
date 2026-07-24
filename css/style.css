@@ -517,7 +517,47 @@ a { color: inherit; text-decoration: none; }
 .g6 { background: linear-gradient(135deg, #3a0b6e, #f01ed0); }
 
 /* ---------- Stats (asymmetric bento) ---------- */
-.stats-band { padding: 30px 0 80px; }
+.stats-band {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 0 46px;
+  margin-top: -55px;
+}
+.stats-band .container { position: relative; z-index: 1; }
+/* subtle brand-colored matrix rain + falling stars (canvas, drawn in main.js) */
+.matrix-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+/* ghost line icons per tile */
+.sb-icon {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  width: 58px;
+  height: 58px;
+  color: color-mix(in srgb, var(--sc) 45%, transparent);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--sc) 35%, transparent));
+  animation: sbGhost 7s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.sb-tile:hover .sb-icon { color: color-mix(in srgb, var(--sc) 80%, transparent); }
+.sb-wide .sb-icon {
+  top: auto;
+  bottom: 20px;
+  right: 26px;
+  width: 82px;
+  height: 82px;
+}
+.sb-icon-spin { animation: sbSpin 14s linear infinite; }
+@keyframes sbSpin { to { transform: rotate(360deg); } }
 .stats-bento {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

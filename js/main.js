@@ -214,3 +214,104 @@
 
   restart();
 })();
+
+/* ===== Matrix rain + falling stars (stats section background) ===== */
+(function () {
+  const canvas = document.querySelector(".matrix-bg");
+  if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const ctx = canvas.getContext("2d");
+  const COLORS = ["#00aeef", "#2e6bff", "#8b3dff", "#f01ed0"];
+  const GLYPHS = "01+◆·10AI";
+  const GAP = 30;
+  let W = 0, H = 0, drops = [], stars = [], raf = null, last = 0;
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    if (r.width === W && r.height === H) return;
+    W = canvas.width = Math.max(1, Math.floor(r.width));
+    H = canvas.height = Math.max(1, Math.floor(r.height));
+    const cols = Math.floor(W / GAP);
+    drops = Array.from({ length: cols }, (_, i) => ({
+      x: i * GAP + GAP / 2,
+      y: Math.random() * H,
+      speed: 0.5 + Math.random() * 1.1,
+      color: COLORS[(Math.random() * COLORS.length) | 0],
+    }));
+    ctx.fillStyle = "#0a0a0d";
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  function tick(t) {
+    raf = requestAnimationFrame(tick);
+    if (t - last < 40) return; /* ~25fps is plenty for a subtle effect */
+    last = t;
+
+    /* fade previous frame toward the page background */
+    ctx.fillStyle = "rgba(10, 10, 13, 0.16)";
+    ctx.fillRect(0, 0, W, H);
+
+    /* matrix glyph rain */
+    ctx.font = "13px monospace";
+    ctx.textAlign = "center";
+    for (const d of drops) {
+      const g = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = d.color;
+      ctx.fillText(g, d.x, d.y);
+      ctx.globalAlpha = 1;
+      d.y += d.speed * 9;
+      if (d.y > H + 20) {
+        d.y = -10 - Math.random() * 60;
+        d.speed = 0.5 + Math.random() * 1.1;
+        d.color = COLORS[(Math.random() * COLORS.length) | 0];
+      }
+    }
+
+    /* occasional falling star with a glowing tail */
+    if (Math.random() < 0.05 && stars.length < 4) {
+      stars.push({
+        x: Math.random() * W,
+        y: -30,
+        vx: (Math.random() - 0.5) * 1.4,
+        vy: 3.2 + Math.random() * 2.4,
+        len: 46 + Math.random() * 60,
+        color: COLORS[(Math.random() * COLORS.length) | 0],
+      });
+    }
+    for (let s = stars.length - 1; s >= 0; s--) {
+      const st = stars[s];
+      const grad = ctx.createLinearGradient(st.x, st.y - st.len, st.x, st.y);
+      grad.addColorStop(0, "transparent");
+      grad.addColorStop(1, st.color);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.6;
+      ctx.globalAlpha = 0.8;
+      ctx.beginPath();
+      ctx.moveTo(st.x - st.vx * (st.len / st.vy), st.y - st.len);
+      ctx.lineTo(st.x, st.y);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+      st.x += st.vx;
+      st.y += st.vy;
+      if (st.y - st.len > H) stars.splice(s, 1);
+    }
+  }
+
+  /* run only while the section is on screen */
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          resize();
+          if (!raf) raf = requestAnimationFrame(tick);
+        } else if (raf) {
+          cancelAnimationFrame(raf);
+          raf = null;
+        }
+      });
+    },
+    { rootMargin: "100px" }
+  );
+  io.observe(canvas.parentElement);
+  window.addEventListener("resize", resize);
+})();
