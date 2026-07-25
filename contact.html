@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Big Moose AI Solutions</title>
-  <meta name="description" content="Start your project with Big Moose AI Solutions. Offices in Steamboat Springs, Miami and Madrid.">
+  <meta name="description" content="Start your project with Big Moose AI Solutions. Offices in Steamboat Springs, New York, Miami and Madrid.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,78 +41,113 @@
     </nav>
   </header>
 
-  <section class="page-hero" style="padding-bottom: 40px;">
-    <div class="container contact-grid">
-      <div class="contact-info">
-        <span class="hero-kicker">Contact</span>
-        <h1><span data-split>Let's make something</span> <span class="grad-text" data-split>big.</span></h1>
-        <p class="lead">Tell us about your brand and your goals. We'll come back within one business day with next steps — and usually a few ideas you didn't ask for.</p>
-        <a class="contact-email" href="mailto:hello@bigmoose.ai">hello@bigmoose.ai</a>
-        <div class="offices" data-stagger>
-          <div class="office reveal">
-            <h5>Steamboat Springs</h5>
-            <p>Colorado, USA — Mountain HQ</p>
-          </div>
-          <div class="office reveal">
-            <h5>Miami</h5>
-            <p>Florida, USA — LATAM gateway</p>
-          </div>
-          <div class="office reveal">
-            <h5>Madrid</h5>
-            <p>Spain — European hub</p>
-          </div>
-        </div>
-      </div>
+  <section class="page-hero" style="padding-bottom: 10px;">
+    <div class="container">
+      <span class="hero-kicker">Contact</span>
+      <h1><span data-split>Let's make something</span> <span class="grad-text" data-split>big.</span></h1>
+      <p class="lead">Answer a few quick questions — it takes less than a minute — and we'll come back within one business day with next steps.</p>
+      <a class="contact-email" href="mailto:hello@bigmoose.ai">hello@bigmoose.ai</a>
+    </div>
+  </section>
 
-      <form class="contact-form reveal" id="contact-form">
-        <div class="form-row">
-          <div class="field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="field">
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company" placeholder="Your company">
-          </div>
+  <!-- ======= INTERACTIVE PROJECT FORM ======= -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <form class="madlib reveal" id="contact-form">
+        <p class="ml-line">Hi Big Moose — my name is
+          <input class="ml-input" type="text" name="name" placeholder="your name" required>
+          and I'm with
+          <input class="ml-input" type="text" name="company" placeholder="your company">
+        </p>
+
+        <p class="ml-line">I could use your help with</p>
+        <div class="ml-chips" data-field="interest" data-multi>
+          <button type="button" class="chip" style="--pc: #00aeef;">Creative &amp; Content</button>
+          <button type="button" class="chip" style="--pc: #2e6bff;">Marketing &amp; Growth</button>
+          <button type="button" class="chip" style="--pc: #8b3dff;">Automation &amp; Ops</button>
+          <button type="button" class="chip" style="--pc: #f01ed0;">Strategy &amp; BD</button>
+          <button type="button" class="chip" style="--pc: #d97757;">AI Consulting &amp; Training</button>
+          <button type="button" class="chip" style="--pc: #8b3dff;">Not sure yet — guide me</button>
         </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@company.com" required>
-          </div>
-          <div class="field">
-            <label for="budget">Budget</label>
-            <select id="budget" name="budget">
-              <option value="">Select a range</option>
-              <option>Under $5k / month</option>
-              <option>$5k – $15k / month</option>
-              <option>$15k – $50k / month</option>
-              <option>$50k+ / month</option>
-            </select>
-          </div>
+
+        <p class="ml-line">My monthly budget is around</p>
+        <div class="ml-chips" data-field="budget">
+          <button type="button" class="chip" style="--pc: #00aeef;">Under $5k</button>
+          <button type="button" class="chip" style="--pc: #2e6bff;">$5k – $15k</button>
+          <button type="button" class="chip" style="--pc: #8b3dff;">$15k – $50k</button>
+          <button type="button" class="chip" style="--pc: #f01ed0;">$50k+</button>
+          <button type="button" class="chip" style="--pc: #d97757;">Let's figure it out together</button>
         </div>
-        <div class="field">
-          <label for="interest">What do you need?</label>
-          <select id="interest" name="interest">
-            <option value="">Select a vertical</option>
-            <option>Creative &amp; Content</option>
-            <option>Marketing &amp; Growth</option>
-            <option>Automation &amp; Ops</option>
-            <option>Strategy &amp; Business Development</option>
-            <option>AI Consulting &amp; Training</option>
-            <option>Not sure yet — help me choose</option>
-          </select>
+
+        <p class="ml-line">I'd love to meet</p>
+        <div class="ml-chips" data-field="meeting">
+          <button type="button" class="chip" style="--pc: #00aeef;">Virtually</button>
+          <button type="button" class="chip" style="--pc: #f01ed0;">In person</button>
+          <button type="button" class="chip" style="--pc: #8b3dff;">Either works</button>
         </div>
-        <div class="field">
-          <label for="message">Project details</label>
-          <textarea id="message" name="message" placeholder="Tell us about your goals, timeline and anything else we should know." required></textarea>
+
+        <p class="ml-line">A little more about my project:</p>
+        <textarea class="ml-area" name="message" placeholder="Goals, timeline, big dreams — anything you want us to know."></textarea>
+
+        <p class="ml-line">You can reach me at
+          <input class="ml-input ml-email" type="email" name="email" placeholder="you@company.com" required>
+        </p>
+
+        <input type="hidden" name="interest">
+        <input type="hidden" name="budget">
+        <input type="hidden" name="meeting">
+
+        <div class="ml-actions">
+          <button type="submit" class="btn btn-grad btn-xl"><span class="btn-label">Start your project</span> <span class="arrow">→</span></button>
+          <p class="form-note">We reply within one business day. Your information is never shared.</p>
         </div>
-        <button type="submit" class="btn btn-grad" style="width: 100%; justify-content: center;">
-          <span class="btn-label">Start your project</span> <span class="arrow">→</span>
-        </button>
-        <p class="form-note">We reply within one business day. Your information is never shared.</p>
         <div class="form-success">Thanks! Your message is on its way — we'll be in touch within one business day. 🦌</div>
       </form>
+    </div>
+  </section>
+
+  <!-- ======= CITIES ======= -->
+  <section class="section" style="padding-top: 0; padding-bottom: 60px;">
+    <div class="container">
+      <div class="city-strip reveal">
+        <div class="city">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 38 L17 13 L24 25 L30 17 L44 38 Z"/>
+            <path d="M13.5 20 L17 17 L20.5 20"/>
+          </svg>
+          <span>Steamboat Springs, CO</span>
+        </div>
+        <div class="city">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 38 V24 h6 v14"/>
+            <path d="M18 38 V14 h7 v24"/>
+            <path d="M21.5 14 V9"/>
+            <path d="M29 38 V20 h6 v18"/>
+            <path d="M39 38 V28 h4 v10"/>
+            <path d="M4 38 h40"/>
+          </svg>
+          <span>New York, NY</span>
+        </div>
+        <div class="city">
+          <svg viewBox="0 0 48 48" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="38" cy="12" r="4" stroke="#e8c34c"/>
+            <path d="M20 34 C20 24 21 18 24 13" stroke="#3fae6a"/>
+            <path d="M24 13 C20 10 15 10 12 13 M24 13 C24 8 20 5 16 5 M24 13 C27 9 32 8 35 11 M24 13 C29 12 33 15 33 19" stroke="#3fae6a"/>
+            <path d="M6 38 C10 35 14 35 18 38 C22 41 26 41 30 38 C34 35 38 35 42 38" stroke="#00aeef"/>
+          </svg>
+          <span>Miami, FL</span>
+        </div>
+        <div class="city">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 38 V18 h6 v-5 l3 3 l3 -3 v5 h8 v-5 l3 3 l3 -3 v5 h6 v20"/>
+            <path d="M4 38 h40"/>
+            <path d="M21 38 v-8 a3 3 0 0 1 6 0 v8"/>
+            <path d="M13 26 h4 M31 26 h4"/>
+          </svg>
+          <span>Madrid, Spain</span>
+        </div>
+      </div>
+      <p class="city-note">© <span data-year>2026</span> Big Moose AI Solutions · National &amp; International Services</p>
     </div>
   </section>
 
@@ -140,7 +175,7 @@
         </details>
         <details class="faq-item reveal">
           <summary>Do you work with clients outside the US and Spain?</summary>
-          <div class="faq-body">Yes. With teams in Steamboat Springs, Miami and Madrid, we cover US, LATAM and European time zones in English and Spanish.</div>
+          <div class="faq-body">Yes. With teams in Steamboat Springs, New York, Miami and Madrid, we cover US, LATAM and European time zones in English and Spanish.</div>
         </details>
       </div>
     </div>
@@ -188,6 +223,7 @@
         <span>© <span data-year>2026</span> Big Moose AI Solutions. All rights reserved.</span>
         <div class="footer-locations">
           <span>Steamboat Springs</span>
+          <span>New York</span>
           <span>Miami</span>
           <span>Madrid</span>
         </div>
