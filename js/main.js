@@ -336,3 +336,30 @@
     });
   });
 })();
+
+/* ===== Postcard lightbox (contact cities) ===== */
+(function () {
+  const box = document.querySelector("#postcard-box");
+  if (!box) return;
+  const img = box.querySelector("img");
+  const cap = box.querySelector("figcaption");
+  const open = (src, city) => {
+    img.src = src;
+    img.alt = "Big Moose in " + city;
+    cap.textContent = city;
+    box.classList.add("open");
+    box.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  };
+  const close = () => {
+    box.classList.remove("open");
+    box.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+  document.querySelectorAll(".city[data-postcard]").forEach((c) => {
+    c.addEventListener("click", () => open(c.dataset.postcard, c.dataset.city));
+  });
+  box.querySelector(".lb-close").addEventListener("click", close);
+  box.addEventListener("click", (e) => { if (e.target === box) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+})();
