@@ -315,3 +315,24 @@
   io.observe(canvas.parentElement);
   window.addEventListener("resize", resize);
 })();
+
+/* ===== Mad-lib chips (contact) ===== */
+(function () {
+  document.querySelectorAll(".ml-chips").forEach((group) => {
+    const field = group.dataset.field;
+    const hidden = document.querySelector(`input[type="hidden"][name="${field}"]`);
+    const multi = group.hasAttribute("data-multi");
+    group.querySelectorAll(".chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        if (multi) {
+          chip.classList.toggle("on");
+        } else {
+          group.querySelectorAll(".chip").forEach((c) => c.classList.toggle("on", c === chip && !c.classList.contains("on")));
+        }
+        if (hidden) {
+          hidden.value = [...group.querySelectorAll(".chip.on")].map((c) => c.textContent.trim()).join(", ");
+        }
+      });
+    });
+  });
+})();
