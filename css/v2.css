@@ -1,0 +1,470 @@
+/* ============================================================
+   Big Moose — v2 components (loads after style.css)
+   New launch homepage: hero, pillars tags, demos, studio spot,
+   why/character, presence strip. Does not modify style.css.
+   ============================================================ */
+
+/* ---------- Hero v2: single message over video ---------- */
+.hero-v2 {
+  position: relative;
+  min-height: 92svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(60% 80% at 70% 20%, rgba(46, 107, 255, 0.16), transparent 60%),
+    radial-gradient(50% 70% at 20% 80%, rgba(240, 30, 208, 0.10), transparent 60%),
+    var(--bg);
+}
+.hero-v2 .hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+.hero-v2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 13, 0.35) 0%, rgba(10, 10, 13, 0.15) 45%, var(--bg) 100%);
+}
+.hero-v2 .hv-content {
+  position: relative;
+  z-index: 2;
+  padding: 140px 0 90px;
+  max-width: 780px;
+}
+.hero-v2 .hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+.hero-v2 .hero-kicker::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-v2 h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(40px, 6.2vw, 78px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+.hero-v2 .lead {
+  color: var(--muted);
+  font-size: clamp(17px, 1.6vw, 20px);
+  max-width: 58ch;
+  margin: 26px 0 18px;
+}
+.sig-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0 0 38px;
+}
+.sig-line span { opacity: 0.85; }
+.sig-line .sig-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--grad);
+  margin: 0 12px;
+  opacity: 1;
+}
+.hero-v2 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+
+/* ---------- Pillar panels: category tag ---------- */
+.vp-tag {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: color-mix(in srgb, var(--pc) 42%, rgba(10, 10, 13, 0.55));
+  border: 1px solid color-mix(in srgb, var(--pc) 55%, transparent);
+  padding: 6px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+.vpanel .vp-open .vp-tag { margin-bottom: 14px; }
+
+/* ---------- Demo cards: see it working ---------- */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.demo-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: transform 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.demo-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--pc, var(--accent)) 45%, var(--line)); }
+.demo-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pc, var(--accent));
+}
+.demo-stage {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 210px;
+  justify-content: center;
+}
+.demo-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.demo-card > p { color: var(--muted); font-size: 15px; margin-top: -8px; }
+
+/* chat vignette */
+.chip {
+  align-self: center;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.chip.ok { color: #7ef0c0; border-color: rgba(126, 240, 192, 0.25); }
+.bubble {
+  max-width: 85%;
+  font-size: 13.5px;
+  line-height: 1.45;
+  padding: 10px 14px;
+  border-radius: 16px;
+}
+.bubble.out {
+  align-self: flex-start;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 4px;
+}
+.bubble.in {
+  align-self: flex-end;
+  background: linear-gradient(120deg, rgba(46, 107, 255, 0.32), rgba(0, 174, 239, 0.24));
+  border: 1px solid rgba(46, 107, 255, 0.35);
+  border-bottom-right-radius: 4px;
+}
+
+/* pipeline vignette */
+.pipe-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+.pipe-row .tick {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  background: rgba(126, 240, 192, 0.14);
+  color: #7ef0c0;
+  border: 1px solid rgba(126, 240, 192, 0.3);
+}
+.pipe-row.live .tick {
+  background: rgba(46, 107, 255, 0.18);
+  color: var(--accent-2);
+  border-color: rgba(46, 107, 255, 0.4);
+}
+.pipe-row .when { margin-left: auto; color: var(--muted); font-size: 11.5px; }
+
+/* before/after vignette */
+.ba-wrap { display: flex; flex-direction: column; gap: 10px; }
+.ba-tile {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  min-height: 64px;
+}
+.ba-tile .ba-tag {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ba-before { background: #e8e6e0; }
+.ba-before .ba-word {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #6b6257;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+}
+.ba-before .ba-tag { color: #8a8378; }
+.ba-after { background: var(--surface-2); }
+.ba-after .ba-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ba-arrow { align-self: center; color: var(--muted); font-size: 16px; }
+
+/* ---------- Studio spotlight ---------- */
+.studio-spot {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(100deg, rgba(10, 10, 13, 0.94) 0%, rgba(10, 10, 13, 0.82) 52%, rgba(10, 10, 13, 0.45) 100%),
+    url("../assets/v-creative.webp") 78% 40% / cover no-repeat;
+  padding: clamp(34px, 5vw, 64px);
+}
+.studio-spot::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--grad);
+}
+.studio-spot .ss-inner { max-width: 640px; }
+.studio-spot h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.12;
+  margin: 14px 0 18px;
+}
+.studio-spot .ss-body { color: var(--muted); max-width: 60ch; }
+.ss-names {
+  margin: 26px 0 6px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  opacity: 0.9;
+  line-height: 2;
+}
+.ss-names .ss-row-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 10px;
+}
+.ss-note { font-size: 12.5px; color: var(--muted); margin: 10px 0 28px; max-width: 58ch; }
+
+/* ---------- Why Big Moose + character ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+.q-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  background: var(--surface);
+  margin-top: 16px;
+}
+.q-card .q-who {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+.q-card p { font-size: 16.5px; line-height: 1.5; }
+.q-card.q-us {
+  background: linear-gradient(140deg, rgba(46, 107, 255, 0.12), rgba(240, 30, 208, 0.06)), var(--surface);
+  border-color: rgba(46, 107, 255, 0.35);
+}
+.q-card.q-us .q-who { color: var(--accent-2); }
+.why-close { color: var(--muted); margin-top: 22px; max-width: 56ch; }
+
+.moose-figure { position: relative; display: grid; place-items: center; }
+.moose-figure::before {
+  content: "";
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(46, 107, 255, 0.28), rgba(240, 30, 208, 0.10) 55%, transparent 72%);
+  filter: blur(12px);
+}
+.moose-figure img {
+  position: relative;
+  width: min(340px, 78%);
+  filter: drop-shadow(0 24px 50px rgba(0, 0, 0, 0.55));
+  animation: moose-float 7s ease-in-out infinite;
+}
+@keyframes moose-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ---------- Presence strip ---------- */
+.presence-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.presence-card {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  aspect-ratio: 4 / 3;
+}
+.presence-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.presence-card:hover img { transform: scale(1.045); }
+.presence-card .pc-name {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+}
+.presence-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(10, 10, 13, 0.72) 100%);
+}
+.presence-note { text-align: center; color: var(--muted); margin-top: 26px; }
+
+/* ---------- Journey word tags (Assess / Build / Improve) ---------- */
+.j-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pc, var(--accent));
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* ---------- Placeholder pages (Fase 2) ---------- */
+.ph-wrap {
+  min-height: 62svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 140px 0 80px;
+}
+.ph-wrap h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4.5vw, 52px); }
+.ph-wrap p { color: var(--muted); max-width: 52ch; margin: 18px auto 30px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .demo-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .moose-figure { order: -1; }
+  .moose-figure img { width: min(260px, 60%); }
+  .presence-grid { grid-template-columns: 1fr; }
+  .presence-card { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 640px) {
+  .hero-v2 .hv-content { padding: 120px 0 70px; }
+  .sig-line { font-size: 11.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .moose-figure img { animation: none; }
+  .presence-card img, .demo-card { transition: none; }
+}
+
+/* ---------- Fase 1.1: accesibilidad ---------- */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 100;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+.btn:focus-visible,
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.vpanel:focus-within {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+.vpanel:focus-within .vp-open { opacity: 1; transform: none; }
+.vpanel:focus-within .vp-side { opacity: 0; }
